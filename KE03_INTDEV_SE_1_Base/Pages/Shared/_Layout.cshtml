@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Matrix Inc.</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div class="d-flex align-items-center w-100 justify-content-between custom-navbar-content">
+                    <!-- Linkerkant -->
+                    <ul class="navbar-nav flex-row gap-3">
+                        <li>
+                            <a class="nav-link d-flex align-items-center gap-1" data-bs-toggle="offcanvas" href="#productenOffcanvas">
+                                Producten
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link d-flex align-items-center gap-1" data-bs-toggle="offcanvas" href="#fabrikantenFlyout">
+                                Fabrikanten
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Midden: zoekbalk -->
+                    <div class="navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="naam, serienummer..." aria-label="Zoeken" />
+                            <span class="input-group-text bg-white">
+                                <i class="bi bi-search"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Rechterkant: icons -->
+                    <div class="d-flex align-items-center gap-3 navbar-icons">
+                        <a href="/Account/Login" title="Inloggen"><i class="bi bi-person"></i></a>
+                        <a href="/Winkelwagen" title="Winkelwagen" class="position-relative">
+                            <i class="bi bi-cart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - KE03_INTDEV_SE_1_Base - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Offcanvas Producten -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="productenOffcanvas" aria-labelledby="productenOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="productenOffcanvasLabel">Producten</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0 position-relative overflow-visible">
+            <ul class="main-menu list-unstyled m-0">
+                <li class="menu-item has-submenu" data-submenu="submenuA">
+                    <a href="#" class="menu-link">Categorie A &rsaquo;</a>
+                </li>
+                <li class="menu-item has-submenu" data-submenu="submenuB">
+                    <a href="#" class="menu-link">Categorie B &rsaquo;</a>
+                </li>
+            </ul>
+
+            <div id="submenuA" class="submenu">
+                <div class="submenu-header">Categorie A</div>
+                <ul class="submenu-list list-unstyled">
+                    <li><a class="submenu-link" href="#">Product A1</a></li>
+                    <li><a class="submenu-link" href="#">Product A2</a></li>
+                </ul>
+            </div>
+
+            <div id="submenuB" class="submenu">
+                <div class="submenu-header">Categorie B</div>
+                <ul class="submenu-list list-unstyled">
+                    <li><a class="submenu-link" href="#">Product B1</a></li>
+                    <li><a class="submenu-link" href="#">Product B2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas Fabrikanten -->
+    <div id="fabrikantenFlyout" class="offcanvas offcanvas-top" tabindex="-1" aria-labelledby="fabrikantenFlyoutLabel">
+        <div class="offcanvas-header">
+            <h5 id="fabrikantenFlyoutLabel">Fabrikanten</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="container">
+            <!-- Alfabet navigatie -->
+            <nav class="alphabet-nav mb-3" id="alphabetNav"></nav>
+
+            <!-- Fabrikanten per letter -->
+            <h6 id="section-#">#</h6>
+            <ul class="horizontal-list">
+                <li><a href="/Fabrikanten/Fabrikant123">123 Fabrikant</a></li>
+                <li><a href="/Fabrikanten/Fabrikant456">456 Fabrikant</a></li>
+            </ul>
+            <hr />
+
+            <h6 id="section-a">A</h6>
+            <ul class="horizontal-list">
+                <li><a href="/Fabrikanten/Aavid">Aavid</a></li>
+                <li><a href="/Fabrikanten/ABB">ABB</a></li>
+                <li><a href="/Fabrikanten/Ander">Ander</a></li>
+            </ul>
+            <hr />
+
+            <h6 id="section-b">B</h6>
+            <ul class="horizontal-list">
+                <li><a href="/Fabrikanten/Bosch">Bosch</a></li>
+                <li><a href="/Fabrikanten/Beko">Beko</a></li>
+            </ul>
+            <hr />
+        </div>
+    </div>>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/producten-submenu.js"></script>
+    <script src="~/js/alphabet-nav.js"></script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

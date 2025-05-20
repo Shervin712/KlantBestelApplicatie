@@ -1,0 +1,32 @@
+﻿@page
+@model DataAccessLayer.Models.FabrikantenModel
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="fabrikantenFlyout" aria-labelledby="fabrikantenFlyoutLabel">
+    <div class="offcanvas-header">
+        <h5 id="fabrikantenFlyoutLabel">Fabrikanten</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="container">
+        <!-- Alfabet navigatie -->
+        <nav class="alphabet-nav mb-3">
+            @foreach (var letter in Model.Groepering.Keys)
+            {
+                <a href="#section-@letter" class="alphabet-link" data-bs-dismiss="offcanvas">@letter</a>
+            }
+        </nav>
+
+        <!-- Fabrikanten per letter -->
+        @foreach (var groep in Model.Groepering)
+        {
+            <h6 id="section-@groep.Key">@groep.Key</h6>
+            <ul class="horizontal-list">
+                @foreach (var fabrikant in groep.Value)
+                {
+                    <li><a href="/Fabrikanten/@fabrikant.Naam">@fabrikant.Naam</a></li>
+                }
+            </ul>
+            <hr />
+        }
+    </div>
+</div>
