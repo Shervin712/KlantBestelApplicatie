@@ -42,11 +42,12 @@
 
                     <!-- Rechterkant: icons -->
                     <div class="d-flex align-items-center gap-3 navbar-icons">
-                        <a href="/Account/Login" title="Inloggen"><i class="bi bi-person"></i></a>
-                            <a asp-page="/Cart" title="Cart" class="position-relative">
+                        <a href="/Account/Login" title="Inloggen" class="login-icon">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <a asp-page="/Cart" title="Cart" class="cart-icon position-relative">
                             <i class="bi bi-cart"></i>
-                            </a>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                            <span class="badge rounded-pill bg-danger">3</span>
                         </a>
                     </div>
                 </div>
@@ -72,31 +73,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-0 position-relative overflow-visible">
-            <ul class="main-menu list-unstyled m-0">
-                <li class="menu-item has-submenu" data-submenu="submenuA">
-                    <a href="#" class="menu-link">Categorie A &rsaquo;</a>
-                </li>
-                <li class="menu-item has-submenu" data-submenu="submenuB">
-                    <a href="#" class="menu-link">Categorie B &rsaquo;</a>
-                </li>
-            </ul>
-
-            <div id="submenuA" class="submenu">
-                <div class="submenu-header">Categorie A</div>
-                <ul class="submenu-list list-unstyled">
-                    <li><a class="submenu-link" href="#">Product A1</a></li>
-                    <li><a class="submenu-link" href="#">Product A2</a></li>
-                </ul>
-            </div>
-
-            <div id="submenuB" class="submenu">
-                <div class="submenu-header">Categorie B</div>
-                <ul class="submenu-list list-unstyled">
-                    <li><a class="submenu-link" href="#">Product B1</a></li>
-                    <li><a class="submenu-link" href="#">Product B2</a></li>
-                </ul>
-            </div>
-        </div>
+            @await Component.InvokeAsync("ProductCategoriesMenu")
     </div>
 
     <!-- Offcanvas Fabrikanten -->
@@ -133,7 +110,7 @@
             </ul>
             <hr />
         </div>
-    </div>>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

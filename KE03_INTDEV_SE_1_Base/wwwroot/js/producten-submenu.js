@@ -9,7 +9,6 @@
 
         function showSubmenu() {
             clearTimeout(hideTimeout);
-            // Verberg andere submenu's
             document.querySelectorAll('#productenOffcanvas .submenu').forEach(sm => {
                 if (sm !== submenu) sm.style.display = 'none';
             });
@@ -24,7 +23,6 @@
 
         menuItem.addEventListener('mouseenter', showSubmenu);
         menuItem.addEventListener('mouseleave', hideSubmenu);
-
         submenu.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
             submenu.style.display = 'flex';

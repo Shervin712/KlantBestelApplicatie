@@ -1,0 +1,37 @@
+﻿.section-title {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+}
+
+.top-brands {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.brand-card {
+    background-color: white;
+    border-radius: 6px;
+    padding: 1rem 0.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .brand-card:hover {
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        transform: translateY(-2px);
+    }
+
+    .brand-card img {
+        max-height: 80px;
+        object-fit: contain;
+    }
+
+.brand-name {
+    font-weight: 600;
+    color: #212529;
+    font-size: 0.95rem;
+}

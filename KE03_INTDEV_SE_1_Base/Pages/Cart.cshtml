@@ -1,0 +1,102 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.CartModel
+@{
+    ViewData["Title"] = "Winkelwagen";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">Uw winkelwagen</h2>
+
+    <div class="row">
+        <!-- Linkerkant: Zoekbalk + Winkelwagenlijst -->
+        <div class="col-md-8">
+            <!-- Zoekbalk, aantal en toevoegen op 1 lijn -->
+            <div class="card mb-3 p-3">
+                <div class="d-flex align-items-center gap-3 flex-nowrap">
+                    <input type="text" id="serienummer" class="form-control form-control-sm" placeholder="Zoeken op serienummer" style="flex-grow: 1; min-width: 200px;" />
+                    <div class="input-group input-group-sm" style="max-width: 100px;">
+                        <button class="btn btn-outline-secondary px-2 py-0" type="button">−</button>
+                        <input type="text" class="form-control text-center py-0" value="1" style="width: 40px; font-size: 0.8rem;" />
+                        <button class="btn btn-outline-secondary px-2 py-0" type="button">+</button>
+                    </div>
+                    <button class="btn btn-sm btn-success">Toevoegen</button>
+                </div>
+            </div>
+
+            <!-- Productlijst onder de zoekbalk -->
+            <div>
+                <!-- Kopregel -->
+                <div class="list-group-item d-flex font-weight-bold border-bottom">
+                    <div class="col-2">Product</div>
+                    <div class="col-4">Details</div>
+                    <div class="col-2">Beschikbaarheid</div>
+                    <div class="col-2">Prijs</div>
+                    <div class="col-2">Subtotaal</div>
+                </div>
+
+                <!-- Product-item -->
+                <div class="list-group-item d-flex align-items-center border-bottom py-3">
+                    <!-- Afbeelding -->
+                    <div class="col-2">
+                        <img src="/images/producten/prod1.jpg" alt="Productfoto" class="img-fluid rounded" style="max-height: 80px;">
+                    </div>
+
+                    <!-- Productdetails -->
+                    <div class="col-4">
+                        <h6 class="mb-1">Productnaam</h6>
+                        <div>Artikelnummer: 123456</div>
+                        <div>Fabrikant: VoorbeeldMerk</div>
+                    </div>
+
+                    <!-- Beschikbaarheid -->
+                    <div class="col-2">Op voorraad</div>
+
+                    <!-- Prijs -->
+                    <div class="col-2">€19,99</div>
+
+                    <!-- Subtotaal + Acties -->
+                    <div class="col-2 position-relative d-flex flex-column align-items-end justify-content-between">
+                        <a href="#" title="Verwijder" class="position-absolute top-0 end-0 text-danger">
+                            <i class="bi bi-trash" style="font-size: 1.1rem;"></i>
+                        </a>
+                        <span class="mb-2 mt-4">€39,98</span>
+                        <div class="input-group input-group-sm" style="max-width: 100px;">
+                            <button class="btn btn-outline-secondary px-2 py-0" type="button">-</button>
+                            <input type="text" class="form-control text-center py-0" value="1" style="width: 40px; font-size: 0.8rem;" />
+                            <button class="btn btn-outline-secondary px-2 py-0" type="button">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rechterkant: Overzicht -->
+        <div class="col-md-4 d-flex flex-column">
+            <div class="card sticky-top" style="top: 108px;">
+                <!-- Zorg dat top waarde past bij padding en margin -->
+                <div class="card-body">
+                    <h5 class="card-title">Overzicht</h5>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Totaal artikelen</span>
+                            <strong>(1)</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Subtotaal</span>
+                            <strong>€59,97</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Verzendkosten</span>
+                            <strong>€4,95</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Totaal</span>
+                            <strong>€64,92</strong>
+                        </li>
+                    </ul>
+                    <a href="/checkout" class="btn btn-primary w-100">Naar betalen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

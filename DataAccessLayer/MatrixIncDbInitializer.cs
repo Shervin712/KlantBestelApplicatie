@@ -1,9 +1,4 @@
 ﻿using DataAccessLayer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
@@ -28,6 +23,7 @@ namespace DataAccessLayer
                 new Customer { Name = "Trinity", Address = "789 Pine St", Active = true }
             };
             context.Customers.AddRange(customers);
+            context.SaveChanges();
 
             var orders = new Order[]
             {
@@ -37,6 +33,7 @@ namespace DataAccessLayer
                 new Order { Customer = customers[2], OrderDate = DateTime.Parse("2021-03-01")}
             };  
             context.Orders.AddRange(orders);
+            context.SaveChanges();
 
             var products = new Product[]
             {
@@ -45,13 +42,23 @@ namespace DataAccessLayer
                 new Product { Name = "EMP (Electro-Magnetic Pulse) Device", Description = "Wapentuig op de schepen van Zion", Price = 129.99m }
             };
             context.Products.AddRange(products);
+            context.SaveChanges();
+
+            var categories = new Category[]
+            {
+                new Category { Name = "Mechanisch" },
+                new Category { Name = "Elektrisch" },
+                new Category { Name = "Hydraulisch" }
+            };
+            context.Categories.AddRange(categories);
+            context.SaveChanges();
 
             var parts = new Part[]
             {
-                new Part { Name = "Tandwiel", Description = "Overdracht van rotatie in bijvoorbeeld de motor of luikmechanismen"},
-                new Part { Name = "M5 Boutje", Description = "Bevestiging van panelen, buizen of interne modules"},
-                new Part { Name = "Hydraulische cilinder", Description = "Openen/sluiten van zware luchtsluizen of bewegende onderdelen"},
-                new Part { Name = "Koelvloeistofpomp", Description = "Koeling van de motor of elektronische systemen."}
+                new Part { Name = "Tandwiel", Description = "Overdracht van rotatie in bijvoorbeeld de motor of luikmechanismen", Stock = 10, Price = 1.99f, CategoryId = categories[0].Id, ArticleNumber = "15896347", Manufacturer = "Molex" },
+                new Part { Name = "M5 Boutje", Description = "Bevestiging van panelen, buizen of interne modules", Stock = 87, Price = 0.99f, CategoryId = categories[0].Id, ArticleNumber = "15897347", Manufacturer = "3M"},
+                new Part { Name = "Hydraulische cilinder", Description = "Openen/sluiten van zware luchtsluizen of bewegende onderdelen", Stock = 6, Price = 49.99f, CategoryId = categories[2].Id, ArticleNumber = "35684963", Manufacturer = "Cromp"},
+                new Part { Name = "Koelvloeistofpomp", Description = "Koeling van de motor of elektronische systemen.", Stock = 0, Price = 74.99f ,CategoryId = categories[1].Id, ArticleNumber = "84523617", Manufacturer = "Siemens"}
             };
             context.Parts.AddRange(parts);
 

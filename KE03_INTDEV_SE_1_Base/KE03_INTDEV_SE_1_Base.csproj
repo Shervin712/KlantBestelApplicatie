@@ -8,16 +8,31 @@
 
   <ItemGroup>
     <Compile Remove="Pages\FabrikantenModel.cshtml.cs" />
+    <Compile Remove="Pages\Privacy.cshtml.cs" />
+    <Compile Remove="Pages\Product.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Pages\FabrikantenModel.cshtml" />
+    <Content Remove="Pages\Privacy.cshtml" />
+    <Content Remove="Pages\Product.cshtml" />
     <Content Remove="wwwroot\js\fabrikanten-alphabet.js" />
     <Content Remove="wwwroot\js\fabrikanten-submenu.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="MatrixInc.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

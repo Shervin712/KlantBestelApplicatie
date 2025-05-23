@@ -1,10 +1,6 @@
 ﻿using DataAccessLayer.Interfaces;
 using DataAccessLayer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories
 {
@@ -31,7 +27,7 @@ namespace DataAccessLayer.Repositories
 
         public IEnumerable<Part> GetAllParts()
         {
-            return _context.Parts;            
+            return _context.Parts.Include(p => p.Category);
         }
 
         public Part? GetPartById(int id)
