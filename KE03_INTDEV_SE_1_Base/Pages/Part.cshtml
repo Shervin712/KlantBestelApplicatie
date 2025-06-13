@@ -66,79 +66,84 @@
             </div>
 
             <!-- Geselecteerd onderdeel als eerste tonen -->
-            @if (Model.Part != null)
-            {
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/80" alt="Onderdeel afbeelding" class="product-image" />
-                    <div class="product-details">
-                        <h3 class="mb-1">@Model.Part.Name</h3>
-                        @if (!string.IsNullOrWhiteSpace(Model.Part.ArticleNumber))
-                        {
-                            <p class="mb-0"><strong>Artikelnr.:</strong> @Model.Part.ArticleNumber</p>
-                        }
-                        @if (!string.IsNullOrWhiteSpace(Model.Part.Manufacturer))
-                        {
-                            <p class="mb-0"><strong>Fabrikant:</strong> @Model.Part.Manufacturer</p>
-                        }
-                    </div>
-                    <div class="product-stock">
-                        <p class="mb-0">@Model.Part.Stock op voorraad</p>
-                    </div>
-                    <div class="product-price">
-                        <p class="mb-0"><strong>EUR @Model.Part.Price.ToString("F2")</strong></p>
-                        <p class="mb-0">(incl. btw)</p>
-                    </div>
-                    <div class="product-actions">
-                        <div class="quantity-input">
-                            <button type="button">−</button>
-                            <input type="text" value="1" />
-                            <button type="button">+</button>
-                        </div>
-                        <button class="add-to-cart">Aan winkelwagentje toevoegen</button>
-                    </div>
-                </div>
-            }
-
-            <!-- Daarna de andere onderdelen uit dezelfde categorie -->
-            @if (Model.RelatedParts.Any())
-            {
-                @foreach (var part in Model.RelatedParts.Where(p => p.Id != Model.Part?.Id))
+            <div id="partsList">
+                @if (Model.Part != null)
                 {
-                    <div class="product-card">
+                    <div class="product-card"
+                         data-price="@Model.Part.Price"
+                         data-stock="@Model.Part.Stock">
                         <img src="https://via.placeholder.com/80" alt="Onderdeel afbeelding" class="product-image" />
                         <div class="product-details">
-                            <h3 class="mb-1">@part.Name</h3>
-                            @if (!string.IsNullOrWhiteSpace(part.ArticleNumber))
+                            <h3 class="mb-1">@Model.Part.Name</h3>
+                            @if (!string.IsNullOrWhiteSpace(Model.Part.ArticleNumber))
                             {
-                                <p class="mb-0"><strong>Artikelnr.:</strong> @part.ArticleNumber</p>
+                                <p class="mb-0"><strong>Artikelnr.:</strong> @Model.Part.ArticleNumber</p>
                             }
-                            @if (!string.IsNullOrWhiteSpace(part.Manufacturer))
+                            @if (!string.IsNullOrWhiteSpace(Model.Part.Manufacturer))
                             {
-                                <p class="mb-0"><strong>Fabrikant:</strong> @part.Manufacturer</p>
+                                <p class="mb-0"><strong>Fabrikant:</strong> @Model.Part.Manufacturer</p>
                             }
                         </div>
                         <div class="product-stock">
-                            <p class="mb-0">@part.Stock op voorraad</p>
+                            <p class="mb-0">@Model.Part.Stock op voorraad</p>
                         </div>
                         <div class="product-price">
-                            <p class="mb-0"><strong>EUR @part.Price.ToString("F2")</strong></p>
+                            <p class="mb-0"><strong>EUR @Model.Part.Price.ToString("F2")</strong></p>
                             <p class="mb-0">(incl. btw)</p>
                         </div>
                         <div class="product-actions">
                             <div class="quantity-input">
-                                <button type="button">−</button>
-                                <input type="text" value="1" />
-                                <button type="button">+</button>
-                            </div>
+                            <button type="button" class="btn-qty" data-action="decrement">−</button>
+                            <input type="text" value="1" min="1" class="qty-input" />
+                            <button type="button" class="btn-qty" data-action="increment">+</button>
+                        </div>
                             <button class="add-to-cart">Aan winkelwagentje toevoegen</button>
                         </div>
                     </div>
                 }
-            }
-            else
-            {
-                <div class="alert alert-info mt-3">Geen andere onderdelen gevonden in deze categorie.</div>
-            }
+
+                @if (Model.RelatedParts.Any())
+                {
+                    @foreach (var part in Model.RelatedParts.Where(p => p.Id != Model.Part?.Id))
+                    {
+                        <div class="product-card"
+                             data-price="@part.Price"
+                             data-stock="@part.Stock">
+                            <img src="https://via.placeholder.com/80" alt="Onderdeel afbeelding" class="product-image" />
+                            <div class="product-details">
+                                <h3 class="mb-1">@part.Name</h3>
+                                @if (!string.IsNullOrWhiteSpace(part.ArticleNumber))
+                                {
+                                    <p class="mb-0"><strong>Artikelnr.:</strong> @part.ArticleNumber</p>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(part.Manufacturer))
+                                {
+                                    <p class="mb-0"><strong>Fabrikant:</strong> @part.Manufacturer</p>
+                                }
+                            </div>
+                            <div class="product-stock">
+                                <p class="mb-0">@part.Stock op voorraad</p>
+                            </div>
+                            <div class="product-price">
+                                <p class="mb-0"><strong>EUR @part.Price.ToString("F2")</strong></p>
+                                <p class="mb-0">(incl. btw)</p>
+                            </div>
+                            <div class="product-actions">
+                                <div class="quantity-input">
+                                    <button type="button" class="btn-qty" data-action="decrement">−</button>
+                                    <input type="text" value="1" min="1" class="qty-input" />
+                                    <button type="button" class="btn-qty" data-action="increment">+</button>
+                                </div>
+                                <button class="add-to-cart">Aan winkelwagentje toevoegen</button>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-info mt-3">Geen andere onderdelen gevonden in deze categorie.</div>
+                }
+            </div>
         </section>
     </div>
 </div>

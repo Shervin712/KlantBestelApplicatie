@@ -31,13 +31,14 @@
                     </ul>
 
                     <!-- Midden: zoekbalk -->
-                    <div class="navbar-search">
+                    <div class="navbar-search position-relative">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="naam, serienummer..." aria-label="Zoeken" />
+                            <input type="text" id="navbarSearch" class="form-control" placeholder="naam, serienummer..." aria-label="Zoeken" autocomplete="off" />
                             <span class="input-group-text bg-white">
                                 <i class="bi bi-search"></i>
                             </span>
                         </div>
+                        <div id="navbarSearchResults" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></div>
                     </div>
 
                     <!-- Rechterkant: icons -->
@@ -72,7 +73,7 @@
             <h5 class="offcanvas-title" id="productenOffcanvasLabel">Producten</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body p-0 position-relative overflow-visible">
+        <div class="offcanvas-body p-0 position-relative overflow-visible"></div>
             @await Component.InvokeAsync("ProductCategoriesMenu")
     </div>
 
@@ -116,7 +117,9 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/producten-submenu.js"></script>
     <script src="~/js/alphabet-nav.js"></script>
-
+    <script src="~/js/navbar-search.js"></script>
+    <script src="~/js/parts-sorting.js"></script>
+    <script src="~/js/quantity-input.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
