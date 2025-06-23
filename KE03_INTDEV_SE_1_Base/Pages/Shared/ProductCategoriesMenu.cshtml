@@ -1,8 +1,10 @@
-﻿@model IEnumerable<DataAccessLayer.Models.Category>
-
-<ul>
+﻿<ul>
     @foreach (var category in Model)
     {
-        <li>@category.Name</li>
+        <li>
+            <a asp-page="/Product" asp-route-id="@category.Id">
+                @category.Name
+            </a>
+        </li>
     }
 </ul>

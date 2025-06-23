@@ -21,7 +21,7 @@ namespace KE03_INTDEV_SE_1_Base.Pages.Api
 
             var qLower = q.ToLower();
 
-            var results = _context.Parts
+            var results = _context.Products
                 .Where(p =>
                     p.Name.ToLower().Contains(qLower) ||
                     p.ArticleNumber.ToLower().Contains(qLower)
@@ -31,7 +31,8 @@ namespace KE03_INTDEV_SE_1_Base.Pages.Api
                     id = p.Id,
                     name = p.Name,
                     articleNumber = p.ArticleNumber,
-                    manufacturer = p.Manufacturer
+                    manufacturer = p.Manufacturer,
+                    url = $"/Product/{p.Id}"
                 })
                 .Take(10)
                 .ToList();

@@ -27,7 +27,7 @@ namespace DataAccessLayer.Repositories
 
         public IEnumerable<Part> GetAllParts()
         {
-            return _context.Parts.Include(p => p.Category);
+            return _context.Parts;
         }
 
         public Part? GetPartById(int id)

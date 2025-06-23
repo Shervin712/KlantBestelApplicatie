@@ -31,12 +31,26 @@ namespace DataAccessLayer.Repositories
 
         public IEnumerable<Product> GetAllProducts()
         {
-            return _context.Products.Include(p => p.Parts);
+            return _context.Products
+                .Include(p => p.Parts)
+                .Include(p => p.Category);
         }
 
         public Product? GetProductById(int id)
         {
-            return _context.Products.Include(p => p.Parts).FirstOrDefault(p => p.Id == id);
+            return _context.Products
+                .Include(p => p.Parts)
+                .Include(p => p.Category)
+                .FirstOrDefault(p => p.Id == id);
+        }
+
+        public IEnumerable<Product> GetProductsByCategoryId(int categoryId)
+        {
+            return _context.Products
+                .Include(p => p.Parts)
+                .Include(p => p.Category)
+                .Where(p => p.Category != null && p.Category.Id == categoryId)
+                .ToList();
         }
 
         public void UpdateProduct(Product product)

@@ -20,10 +20,10 @@
             }
             data.forEach(item => {
                 $results.append(
-                    `<a href="/Part/${item.id}" class="list-group-item list-group-item-action">
+                    `<a href="${item.url}" class="list-group-item list-group-item-action">
                         <strong>${item.name}</strong> <small class="text-muted">(${item.articleNumber})</small><br/>
                         <span class="text-secondary">${item.manufacturer}</span>
-                    </a>`
+                     </a>`
                 );
             });
             $results.show();

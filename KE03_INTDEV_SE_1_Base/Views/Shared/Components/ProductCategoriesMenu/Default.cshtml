@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<DataAccessLayer.Models.Category>
 
-<ul class="list-group product-categories-menu">
+<ul class="product-categories-menu">
     @foreach (var category in Model)
     {
-        <li class="list-group-item position-relative category-menu-item">
+        <li class="category-menu-item position-relative">
             <span class="category-label">@category.Name</span>
-            @if (category.Parts != null && category.Parts.Any())
+            @if (category.Products != null && category.Products.Any())
             {
-                <ul class="list-group parts-flyout">
-                    @foreach (var part in category.Parts)
+                <ul class="category-flyout">
+                    @foreach (var product in category.Products)
                     {
-                        <li class="list-group-item part-menu-item">
-                            <a href="/Part/@part.Id" class="text-decoration-none text-dark">@part.Name</a>
+                        <li class="category-flyout-item">
+                            <a href="/Product/@product.Id" class="text-decoration-none text-dark">@product.Name</a>
                         </li>
                     }
                 </ul>

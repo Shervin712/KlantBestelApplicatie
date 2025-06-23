@@ -1,0 +1,94 @@
+﻿@page "/Product/{id:int}"
+@model KE03_INTDEV_SE_1_Base.Pages.ProductPageModel
+@{
+    ViewData["Title"] = Model.Product?.Name ?? "Product";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/product.css" />
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Filter zijbalk -->
+        <aside class="col-md-3">
+            <h1 class="fs-3 mb-3">@Model.Product?.Name</h1>
+            <div class="filter-blok">
+                <h2 class="fs-5 mb-4">Filters</h2>
+                @foreach (var filter in new[] { "Type", "Serie", "Fabrikant" })
+                {
+                    <details class="filter-item">
+                        <summary>@filter</summary>
+                        <div class="filter-options">
+                            <label><input type="checkbox" /> Optie 1</label><br />
+                            <label><input type="checkbox" /> Optie 2</label><br />
+                            <label><input type="checkbox" /> Optie 3</label>
+                        </div>
+                    </details>
+                }
+            </div>
+        </aside>
+
+        <!-- Product details -->
+        <section class="col-md-9">
+
+            <div class="d-flex justify-content-end mb-3">
+                <label>Sorteren op:</label>
+                <select class="form-select form-select-sm w-auto ms-2">
+                    <option>Relevantie</option>
+                    <option>Prijs laag - hoog</option>
+                    <option>Prijs hoog - laag</option>
+                </select>
+            </div>
+
+            <!-- Header boven de tabel -->
+            <div class="product-header">
+                <div>Product</div>
+                <div>Details</div>
+                <div class="text-center">Voorraad</div>
+                <div class="text-end">Prijs</div>
+            </div>
+
+            <!-- Productkaart -->
+            <div class="product-card align-items-start">
+                <!-- Afbeelding -->
+                <div>
+                    <img src="https://via.placeholder.com/80" alt="Product afbeelding" class="product-image" />
+                </div>
+
+                <!-- Details -->
+                <div class="ms-3">
+                    <h5>@Model.Product?.Name</h5>
+                    @if (!string.IsNullOrWhiteSpace(Model.Product?.ArticleNumber))
+                    {
+                        <p><strong>Artikelnr:</strong> @Model.Product.ArticleNumber</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Product?.Manufacturer))
+                    {
+                        <p><strong>Fabrikant:</strong> @Model.Product.Manufacturer</p>
+                    }
+                </div>
+
+                <!-- Voorraad -->
+                <div class="text-center">
+                    <p><strong>@Model.Product?.Stock</strong> op voorraad</p>
+                </div>
+
+                <!-- Prijs en Toevoegen -->
+                <div class="d-flex flex-column justify-content-between align-items-end h-100">
+                    <!-- Prijs -->
+                    <p class="mb-2"><strong>EUR @Model.Product?.Price.ToString("F2")</strong></p>
+
+                    <!-- Aantal + Toevoegen -->
+                    <div class="quantity-input d-flex align-items-center gap-2">
+                        <button type="button" class="btn btn-outline-success btn-sm btn-qty" data-action="decrement">−</button>
+                        <input type="text" value="1" class="form-control form-control-sm text-center qty-input" style="width: 50px;" />
+                        <button type="button" class="btn btn-outline-success btn-sm btn-qty" data-action="increment">+</button>
+                        <button class="btn btn-success btn-sm">Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>

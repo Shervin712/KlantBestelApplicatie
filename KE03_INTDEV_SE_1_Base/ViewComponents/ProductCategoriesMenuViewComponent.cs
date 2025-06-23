@@ -12,7 +12,8 @@ public class ProductCategoriesMenuViewComponent : ViewComponent
 
     public IViewComponentResult Invoke()
     {
-        var categories = _categoryRepository.GetAllCategoriesWithPartsAndProducts();
+        var categories = _categoryRepository.GetAllCategories();
+
         return View(categories);
     }
 }

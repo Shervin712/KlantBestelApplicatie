@@ -18,17 +18,10 @@ namespace DataAccessLayer.Repositories
 
         public IEnumerable<Category> GetAllCategories()
         {
-            return _context.Categories;
-        }
-
-        public IEnumerable<Category> GetAllCategoriesWithPartsAndProducts()
-        {
             return _context.Categories
-                .Include(c => c.Parts)
-                    .ThenInclude(p => p.Products)
+                .Include(c => c.Products)
                 .ToList();
         }
-
 
         public Category? GetCategoryById(int id)
         {

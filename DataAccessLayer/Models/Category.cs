@@ -12,5 +12,7 @@ namespace DataAccessLayer.Models
         public string Name { get; set; }
 
         public ICollection<Part> Parts { get; set; } = new List<Part>();
+
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

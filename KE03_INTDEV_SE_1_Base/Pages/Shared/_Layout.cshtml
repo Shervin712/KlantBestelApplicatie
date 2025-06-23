@@ -80,8 +80,9 @@
             <h5 class="offcanvas-title" id="productenOffcanvasLabel">Producten</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body p-0 position-relative overflow-visible"></div>
+        <div class="offcanvas-body p-0 position-relative overflow-visible">
             @await Component.InvokeAsync("ProductCategoriesMenu")
+        </div>
     </div>
 
     <!-- Offcanvas Fabrikanten -->

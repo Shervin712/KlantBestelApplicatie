@@ -15,7 +15,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        ViewData["Categories"] = _categoryRepository.GetAllCategoriesWithPartsAndProducts();
+        ViewData["Categories"] = _categoryRepository.GetAllCategories();
     }
 
 }
