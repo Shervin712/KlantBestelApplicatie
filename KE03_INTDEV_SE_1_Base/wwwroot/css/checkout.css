@@ -1,0 +1,152 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.step-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.step-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.step-circle {
+    background-color: white;
+    border: 3px solid #007bff;
+    color: #007bff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    z-index: 1;
+}
+
+    .step-circle.active {
+        background-color: #007bff;
+        color: white;
+    }
+
+.step-label {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.step-line {
+    width: 80px;
+    height: 4px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.billing-form {
+    width: 55%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+    .form-group label {
+        width: 150px;
+        text-align: right;
+        margin-right: 10px;
+    }
+
+    .form-group input, .form-group select {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.small-label {
+    width: 50px;
+    margin-left: 10px;
+}
+
+.huisnummer {
+    width: 80px;
+    margin-left: 5px;
+}
+
+.summary-container {
+    width: 40%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.summary-items {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: white;
+}
+
+    .summary-items .item {
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+.summary-totals div {
+    margin: 10px 0;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.delivery-info {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.small-margin {
+    margin-top: 15px;
+}
+
+.terms {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

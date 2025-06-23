@@ -1,0 +1,59 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" />
+}
+
+<div class="step-progress">
+    <div class="step-container">
+        <div class="step-circle active">1</div>
+        <div class="step-label">Welkom</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-container">
+        <div class="step-circle">2</div>
+        <div class="step-label">Afrekenen</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-container">
+        <div class="step-circle">3</div>
+        <div class="step-label">Controleren & Betalen</div>
+    </div>
+</div>
+
+<div class="login-container">
+    <div class="tab-buttons">
+        <div class="tab-button active" onclick="showTab('login')">Inloggen</div>
+        <div class="tab-button" onclick="showTab('register')">Registreren</div>
+    </div>
+
+    <div id="login" class="tab-content active">
+        <form method="post">
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input asp-for="LoginEmail" />
+            </div>
+            <div class="form-group">
+                <label for="Password">Wachtwoord</label>
+                <input asp-for="LoginPassword" type="password" />
+            </div>
+
+            <div class="checkbox-group">
+                <input asp-for="RememberMe" type="checkbox" />
+                <label asp-for="RememberMe">Onthoud mij</label>
+            </div>
+
+            <button type="submit">Inloggen</button>
+        </form>
+
+        <div class="guest-button">
+            <form method="get" asp-page="/Payment">
+                <button type="submit" class="btn-primary">Doorgaan als gast</button>
+            </form>
+        </div>
+    </div>
+</div>

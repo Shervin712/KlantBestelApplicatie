@@ -1,0 +1,132 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Nieuwe step-progress styling met bolletjes, lijntjes en titels eronder */
+
+.step-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.step-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.step-circle {
+    background-color: white;
+    border: 3px solid #007bff;
+    color: #007bff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    z-index: 1;
+}
+
+    .step-circle.active {
+        background-color: #007bff;
+        color: white;
+    }
+
+.step-label {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* De lijnen tussen de bolletjes */
+.step-line {
+    width: 80px;
+    height: 4px;
+    background-color: #ccc;
+    margin: 0 10px;
+    z-index: 0;
+}
+
+.login-container {
+    background-color: white;
+    width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        width: 35%;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .form-group input {
+        width: 60%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.checkbox-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 100px;
+}
+
+button, .btn-primary {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .tab-button.active {
+        border-bottom: 3px solid #007bff;
+    }
+
+.guest-button {
+    margin-top: 20px;
+    text-align: center;
+}

@@ -1,0 +1,42 @@
+﻿@page
+@model OrderHistoryModelPage
+@{
+    ViewData["Title"] = "Bestelgeschiedenis";
+}
+
+<div class="container my-5">
+    <h2>Jouw Bestellingen</h2>
+
+    @if (!Model.Orders.Any())
+    {
+        <p>Er zijn momenteel geen bestellingen voor deze klant.</p>
+    }
+    else
+    {
+        <div class="order-history-list">
+            @foreach (var order in Model.Orders)
+            {
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h5>Bestelling #@order.Id</h5>
+                            <p><strong>Datum:</strong> @order.OrderDate.ToString("dd-MM-yyyy")</p>
+                            <p><strong>Klant:</strong> @order.Customer.Name</p>
+                        </div>
+                        <div class="text-end">
+                            <p><strong>Totaal:</strong><br />€ @order.Total.ToString("0.00")</p>
+                        </div>
+                    </div>
+
+                    <h6 class="mt-3">Producten:</h6>
+                    <ul>
+                        @foreach (var product in order.Products)
+                        {
+                            <li>@product.Name</li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    }
+</div>

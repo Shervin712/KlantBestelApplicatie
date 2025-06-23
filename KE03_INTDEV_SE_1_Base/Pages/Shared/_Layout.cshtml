@@ -43,9 +43,16 @@
 
                     <!-- Rechterkant: icons -->
                     <div class="d-flex align-items-center gap-3 navbar-icons">
-                        <a href="/Account/Login" title="Inloggen" class="login-icon">
-                            <i class="bi bi-person"></i>
-                        </a>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle login-icon" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                <li><a class="dropdown-item" asp-page="/OrderHistory">Bestellingen</a></li>
+                                <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Profiel</a></li>
+                                <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Uitloggen</a></li>
+                            </ul>
+                        </div>
                         <a asp-page="/Cart" title="Cart" class="cart-icon position-relative">
                             <i class="bi bi-cart"></i>
                             <span class="badge rounded-pill bg-danger">3</span>

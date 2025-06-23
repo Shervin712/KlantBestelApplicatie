@@ -1,0 +1,79 @@
+﻿@page
+@model PaymentModel
+@{
+    ViewData["Title"] = "Controleer en Betaal";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css" />
+}
+
+<div class="step-progress">
+    <div class="step-container">
+        <div class="step-circle">1</div>
+        <div class="step-label">Welkom</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-container">
+        <div class="step-circle">2</div>
+        <div class="step-label">Afrekenen</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-container">
+        <div class="step-circle active">3</div>
+        <div class="step-label">Controleren & Betalen</div>
+    </div>
+</div>
+
+<div class="checkout-container">
+
+    <div class="billing-form">
+        <h3>Leveringsopties</h3>
+        <div class="section">
+            <div>Levering optie: <strong>Levering aan huis</strong> <a href="#">Bewerk</a></div>
+            <div class="small-margin">Leveringsinformatie: <a href="#">Bewerk</a></div>
+            <div class="delivery-info">
+                Voornaam: John<br />
+                Achternaam: Doe<br />
+                Straat: Straatnaam 1<br />
+                Plaats: Amsterdam<br />
+                Land: Nederland<br />
+                Postcode: 1234AB<br />
+                Telefoon: 0612345678
+            </div>
+        </div>
+
+        <h3>Betaalmethode</h3>
+        <div class="section">
+            <div><input type="radio" name="Payment" checked /> iDeal</div>
+            <div><input type="radio" name="Payment" /> Creditcard</div>
+            <div><input type="radio" name="Payment" /> Paypal</div>
+        </div>
+    </div>
+
+    <div class="summary-container">
+        <h3>Samenvatting bestelling</h3>
+
+        <div class="summary-items">
+            @foreach (var item in Model.Bestelling)
+            {
+                <div class="item">@item</div>
+            }
+        </div>
+
+        <div class="summary-totals">
+            <div>Subtotaal: €@Model.Subtotaal</div>
+            <div>Aflevering: Gratis</div>
+            <div><strong>Totaal: €@Model.Totaal</strong></div>
+        </div>
+
+        <div class="terms">
+            <input type="checkbox" id="terms" /> Ik ga akkoord met de gebruiksvoorwaarden
+        </div>
+
+        <form method="post">
+            <button type="submit" class="btn-primary">Kopen met geselecteerde methode</button>
+        </form>
+    </div>
+
+</div>

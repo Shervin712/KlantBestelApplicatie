@@ -1,0 +1,103 @@
+﻿@page
+@model CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css" />
+}
+
+<div class="step-progress">
+    <div class="step-container">
+        <div class="step-circle">1</div>
+        <div class="step-label">Welkom</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-container">
+        <div class="step-circle active">2</div>
+        <div class="step-label">Afrekenen</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-container">
+        <div class="step-circle">3</div>
+        <div class="step-label">Controleren & Betalen</div>
+    </div>
+</div>
+
+<div class="checkout-container">
+    <form method="post" class="billing-form">
+        <h3>Facturatie- en leveringsinformatie</h3>
+
+        <div class="form-group">
+            <label>Titel</label>
+            <select asp-for="Titel">
+                <option value="Dhr.">Dhr.</option>
+                <option value="Mevr.">Mevr.</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Voornaam</label>
+            <input asp-for="Voornaam" />
+        </div>
+
+        <div class="form-group">
+            <label>Achternaam</label>
+            <input asp-for="Achternaam" />
+        </div>
+
+        <div class="form-group">
+            <label>Straatnaam</label>
+            <input asp-for="Straatnaam" />
+            <label class="small-label">Huisnr</label>
+            <input asp-for="Huisnummer" class="huisnummer" />
+        </div>
+
+        <div class="form-group">
+            <label>Plaats</label>
+            <input asp-for="Plaats" />
+        </div>
+
+        <div class="form-group">
+            <label>Land</label>
+            <select asp-for="Land">
+                <option value="Nederland">Nederland</option>
+                <option value="België">België</option>
+                <option value="Duitsland">Duitsland</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Postcode</label>
+            <input asp-for="Postcode" />
+        </div>
+
+        <div class="form-group">
+            <label>Telefoonnummer</label>
+            <input asp-for="Telefoonnummer" />
+        </div>
+
+    </form>
+
+    <div class="summary-container">
+        <h3>Samenvatting bestelling</h3>
+
+        <div class="summary-items">
+            @foreach (var item in Model.Bestelling)
+            {
+                <div class="item">@item</div>
+            }
+        </div>
+
+        <div class="summary-totals">
+            <div>Subtotaal: €@Model.Subtotaal</div>
+            <div>Aflevering: Gratis</div>
+            <div><strong>Totaal: €@Model.Totaal</strong></div>
+        </div>
+
+        <form method="post">
+            <button type="submit" class="btn-primary">Doorgaan naar betalen</button>
+        </form>
+    </div>
+</div>

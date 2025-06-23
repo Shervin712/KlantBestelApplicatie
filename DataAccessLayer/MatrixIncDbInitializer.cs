@@ -25,16 +25,6 @@ namespace DataAccessLayer
             context.Customers.AddRange(customers);
             context.SaveChanges();
 
-            var orders = new Order[]
-            {
-                new Order { Customer = customers[0], OrderDate = DateTime.Parse("2021-01-01")},
-                new Order { Customer = customers[0], OrderDate = DateTime.Parse("2021-02-01")},
-                new Order { Customer = customers[1], OrderDate = DateTime.Parse("2021-02-01")},
-                new Order { Customer = customers[2], OrderDate = DateTime.Parse("2021-03-01")}
-            };  
-            context.Orders.AddRange(orders);
-            context.SaveChanges();
-
             var products = new Product[]
             {
                 new Product { Name = "Nebuchadnezzar", Description = "Het schip waarop Neo voor het eerst de echte wereld leert kennen", Price = 10000.00m },
@@ -42,6 +32,40 @@ namespace DataAccessLayer
                 new Product { Name = "EMP (Electro-Magnetic Pulse) Device", Description = "Wapentuig op de schepen van Zion", Price = 129.99m }
             };
             context.Products.AddRange(products);
+            context.SaveChanges();
+
+            var orders = new Order[]
+            {
+                new Order
+                {
+                    Customer = customers[0],
+                    OrderDate = DateTime.Parse("2021-01-01"),
+                    Total = 56.10m,
+                    Products = new List<Product> { products[0], products[1] }
+                },
+                new Order
+                {
+                    Customer = customers[0],
+                    OrderDate = DateTime.Parse("2021-02-01"),
+                    Total = 32.59m,
+                    Products = new List<Product> { products[2] }
+                },
+                new Order
+                {
+                    Customer = customers[1],
+                    OrderDate = DateTime.Parse("2021-02-01"),
+                    Total = 163.00m,
+                    Products = new List<Product> { products[0], products[2] }
+                },
+                new Order
+                {
+                    Customer = customers[2],
+                    OrderDate = DateTime.Parse("2021-03-01"),
+                    Total = 562.99m,
+                    Products = new List<Product> { products[1], products[2] }
+                }
+            };
+            context.Orders.AddRange(orders);
             context.SaveChanges();
 
             var categories = new Category[]
